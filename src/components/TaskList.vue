@@ -5,7 +5,7 @@
             <TaskItem :task="task"/>
         </div>
     </div>
-    <TaskListButtonBar @filter="filter"/>
+    <TaskListButtonBar data-testid="taskListButtonBar" @filter="filter" v-if="allTasks.length > 0"/>
 </template>
 
 <script lang="ts">
@@ -22,6 +22,9 @@ export default defineComponent({
         const store = useStore();
 
         const filterType = ref('all');
+
+        const allTasks = ref(store.getters.tasks);
+
         const filteredTasks = computed(() => {
             const tasks = store.getters.tasks as Task[];
             switch (filterType.value) {
@@ -39,6 +42,7 @@ export default defineComponent({
         }
 
         return {
+            allTasks,
             filteredTasks,
             filter
         };

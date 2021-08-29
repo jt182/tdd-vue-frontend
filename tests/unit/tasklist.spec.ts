@@ -18,6 +18,43 @@ describe('Tests for task list Component', () => {
         getters
     });
 
+    it('Render button bar when tasks are available', async () => {
+        const wrapper = shallowMount(TaskList, {
+            global: {
+                provide: {
+                    store: $store
+                }
+            }
+        });
+
+        const taskList = wrapper.find('[data-testid="taskListButtonBar"]');
+        expect(taskList.exists()).toBeTruthy();
+    });
+
+
+    it('Do not render button bar when no tasks are available', async () => {
+        const emptyStore = createStore({
+            state() {
+                return {
+                    tasks: [
+                    ]
+                };
+            },
+            getters
+        });
+
+        const wrapper = shallowMount(TaskList, {
+            global: {
+                provide: {
+                    store: emptyStore
+                }
+            }
+        });
+
+        const taskList = wrapper.find('[data-testid="taskListButtonBar"]');
+        expect(taskList.exists()).toBeFalsy();
+    });
+
     it('Renders all tasks', () => {
         const wrapper = mount(TaskList, {
             global: {
