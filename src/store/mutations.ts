@@ -15,3 +15,8 @@ export const editTask = (state: State, task: Task): void => {
     const taskIndex: number = state.tasks.findIndex(t => t.id == task.id);
     state.tasks[taskIndex] = task;
 };
+
+export const deleteTask = (state: State, id: string): void => {
+    const taskIndex:number = state.tasks.findIndex(t => t.id == id)
+    taskIndex > -1 ? state.tasks.splice(taskIndex, 1) : new Error('Invalid index');
+};

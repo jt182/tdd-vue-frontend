@@ -8,3 +8,7 @@ export const addTask = ({commit}: { commit: Commit }, taskTitle: string): void =
 export const editTask = ({commit}: { commit: Commit }, task: Task): void => {
     commit('editTask', task);
 };
+
+export const deleteTask = ({commit}: { commit: Commit }, id: string): void => {
+    commit('deleteTask', id);
+};

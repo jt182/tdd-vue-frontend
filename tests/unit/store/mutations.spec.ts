@@ -29,4 +29,16 @@ describe('mutations', () => {
 
         expect(state.tasks[0]).toBe(task);
     });
+
+    it('Delete task', () => {
+        const task = {id: '1', title: 'Test Task 1', completed: false};
+        const state = {
+            tasks: [task]
+        };
+
+        mutations.deleteTask(state, '1');
+
+        const taskIndex = state.tasks.findIndex(t => t.id == '1');
+        expect(taskIndex).toBe(-1);
+    });
 });
