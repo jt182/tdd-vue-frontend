@@ -44,4 +44,20 @@ export default defineComponent({
     cursor: pointer;
 }
 
+.redButton {
+    font-weight: bold;
+    border: 1pt solid rgba(red, .6);
+    border-radius: 5pt;
+    padding: 5pt 10pt;
+    margin-left: 5pt;
+    background-color: rgba(red, .15);
+    color: rgba(red, .6);
+}
+
+.redButton:hover {
+    background-color: rgba(red, .4);
+    color: white;
+    cursor: pointer;
+}
+
 </style>

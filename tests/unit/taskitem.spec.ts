@@ -27,7 +27,7 @@ describe('Tests for task item Component', () => {
         expect(taskItem.classes()).toContain('taskItemCompleted');
     });
 
-    it('Update store after click on item', async () => {
+    it('Update store with completed state of task item updated after clicking it', async () => {
         const $store = {
             state: {
                 tasks: []
@@ -51,5 +51,31 @@ describe('Tests for task item Component', () => {
 
         expect($store.commit).toHaveBeenCalled();
         expect($store.commit).toHaveBeenCalledWith('editTask', {'id': '1', 'title': 'Test Task 1', 'completed': true});
+    });
+
+    it('Update store with task item id to delete', async () => {
+        const $store = {
+            state: {
+                tasks: []
+            },
+            commit: jest.fn()
+        };
+
+        const wrapper = shallowMount(TaskItem, {
+            props: {
+                task: {id: '1', title: 'Test Task 1', completed: false}
+            },
+            global: {
+                provide: {
+                    store: $store
+                }
+            }
+        });
+
+        const deleteButton = wrapper.find('[data-testid="deleteButton"]');
+        await deleteButton.trigger('click');
+
+        expect($store.commit).toHaveBeenCalled();
+        expect($store.commit).toHaveBeenCalledWith('deleteTask', '1');
     });
 });

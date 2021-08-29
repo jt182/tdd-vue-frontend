@@ -1,6 +1,13 @@
 <template>
-    <div data-testid="task" :class="taskItemClass" @click="toggleCompletedState">
-        {{ task.title }}
+    <div class="taskItemGroup">
+        <div data-testid="task" :class="taskItemClass" @click="toggleCompletedState">
+            {{ task.title }}
+        </div>
+        <button data-testid="deleteButton"
+                @click="deleteTask"
+                class="redButton"
+        >Delete
+        </button>
     </div>
 </template>
 
@@ -26,8 +33,13 @@ export default defineComponent({
             store.commit('editTask', {...props.task, completed: !props.task.completed});
         }
 
+        function deleteTask(): void {
+            store.commit('deleteTask', props.task.id);
+        }
+
         return {
             taskItemClass,
+            deleteTask,
             toggleCompletedState
         };
     }
@@ -37,13 +49,18 @@ export default defineComponent({
 
 <style scoped lang="scss">
 
+.taskItemGroup {
+    display: flex;
+    margin-bottom: 5pt;
+}
+
 .taskItem {
     font-weight: bold;
     border: 1pt solid black;
     border-radius: 5pt;
     padding: 5pt;
-    margin-bottom: 5pt;
     background-color: rgba(grey, .15);
+    width: 100%;
 }
 
 .taskItem:hover {
