@@ -27,4 +27,20 @@ describe('actions', () => {
         await flushPromises();
         expect(commit).toHaveBeenCalledWith('deleteTask', '1');
     });
+
+    it('clear all tasks', async () => {
+        const commit = jest.fn();
+
+        actions.clearAllTasks({commit});
+        await flushPromises();
+        expect(commit).toHaveBeenCalledWith('clearAllTasks');
+    });
+
+    it('clear completed tasks', async () => {
+        const commit = jest.fn();
+
+        actions.clearCompletedTasks({commit});
+        await flushPromises();
+        expect(commit).toHaveBeenCalledWith('clearCompletedTasks');
+    });
 });

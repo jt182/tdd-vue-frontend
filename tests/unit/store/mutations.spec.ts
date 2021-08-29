@@ -41,4 +41,33 @@ describe('mutations', () => {
         const taskIndex = state.tasks.findIndex(t => t.id == '1');
         expect(taskIndex).toBe(-1);
     });
+
+    it('Clear all task', () => {
+        const state = {
+            tasks: [
+                { id: '1', title: 'Test Task 1', completed: false },
+                { id: '2', title: 'Test Task 2', completed: true },
+                { id: '3', title: 'Test Task 3', completed: false }
+            ]
+        };
+
+        mutations.clearAllTasks(state);
+
+        expect(state.tasks.length).toBe(0);
+    });
+
+
+    it('Clear completed task', () => {
+        const state = {
+            tasks: [
+                { id: '1', title: 'Test Task 1', completed: false },
+                { id: '2', title: 'Test Task 2', completed: true },
+                { id: '3', title: 'Test Task 3', completed: false }
+            ]
+        };
+
+        mutations.clearCompletedTasks(state);
+
+        expect(state.tasks.length).toBe(2);
+    });
 });
