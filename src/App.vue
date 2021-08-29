@@ -1,5 +1,6 @@
 <template>
     <Header title="{ Tasks App }"/>
+    <TaskAdd/>
     <TaskList/>
 </template>
 
@@ -7,10 +8,11 @@
 import { defineComponent } from 'vue';
 import Header from '@/components/Header.vue';
 import TaskList from '@/components/TaskList.vue';
+import TaskAdd from '@/components/TaskAdd.vue';
 
 export default defineComponent({
     name: 'App',
-    components: {TaskList, Header}
+    components: {TaskAdd, TaskList, Header}
 });
 </script>
 
@@ -22,4 +24,24 @@ export default defineComponent({
     margin: auto;
     width: 600pt;
 }
+</style>
+
+<style lang="scss">
+
+.blueButton {
+    font-weight: bold;
+    border: 1pt solid rgba(green, .6);
+    border-radius: 5pt;
+    padding: 5pt 10pt;
+    margin-left: 5pt;
+    background-color: rgba(green, .15);
+    color: rgba(green, .6);
+}
+
+.blueButton:hover {
+    background-color: rgba(green, .4);
+    color: white;
+    cursor: pointer;
+}
+
 </style>
