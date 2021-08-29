@@ -60,4 +60,19 @@ export default defineComponent({
     cursor: pointer;
 }
 
+.orangeButton {
+    font-weight: bold;
+    border: 1pt solid rgba(orange, .6);
+    border-radius: 5pt;
+    padding: 5pt 10pt;
+    margin-left: 5pt;
+    background-color: rgba(orange, .15);
+    color: rgba(orange, .6);
+}
+
+.orangeButton:hover {
+    background-color: rgba(orange, .4);
+    color: white;
+    cursor: pointer;
+}
 </style>

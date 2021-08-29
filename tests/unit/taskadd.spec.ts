@@ -26,7 +26,6 @@ describe('Tests for task add Component', () => {
 
         const createButton = wrapper.find('[data-testid="createButton"]');
         await createButton.trigger('click');
-        await nextTick();
 
         expect($store.commit).toHaveBeenCalled();
         expect($store.commit).toHaveBeenCalledWith('addTask', title);
