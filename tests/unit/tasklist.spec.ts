@@ -9,14 +9,14 @@ describe('Tests for task list Component', () => {
         state() {
             return {
                 tasks: [
-                    { id: '1', title: 'Test Task 1', completed: false },
-                    { id: '2', title: 'Test Task 2', completed: true },
-                    { id: '3', title: 'Test Task 3', completed: false }
+                    {id: '1', title: 'Test Task 1', completed: false},
+                    {id: '2', title: 'Test Task 2', completed: true},
+                    {id: '3', title: 'Test Task 3', completed: false}
                 ]
-            }
+            };
         },
         getters
-    })
+    });
 
     it('Renders all tasks', () => {
         const wrapper = mount(TaskList, {
@@ -37,14 +37,14 @@ describe('Tests for task list Component', () => {
 
         const taskList = wrapper.find('[data-testid="tasks"]');
         expect(taskList.element.children.length).toBe(3);
-    })
+    });
 
     it('Renders completed tasks', async () => {
         const wrapper = shallowMount(TaskList, {
             global: {
                 provide: {
                     store: $store
-                },
+                }
             }
         });
 
@@ -54,14 +54,14 @@ describe('Tests for task list Component', () => {
         await wrapper.getComponent(TaskListButtonBar).vm.$emit('filter', 'completedTasks');
 
         expect(taskList.element.children.length).toBe(1);
-    })
+    });
 
     it('Renders active tasks', async () => {
         const wrapper = shallowMount(TaskList, {
             global: {
                 provide: {
                     store: $store
-                },
+                }
             }
         });
 
@@ -71,5 +71,5 @@ describe('Tests for task list Component', () => {
         await wrapper.getComponent(TaskListButtonBar).vm.$emit('filter', 'activeTasks');
 
         expect(taskList.element.children.length).toBe(2);
-    })
-})
+    });
+});

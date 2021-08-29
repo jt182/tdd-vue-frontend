@@ -14,7 +14,7 @@ describe('mutations', () => {
         const task = state.tasks[0] as Task;
         expect(task.title).toBe(taskTitle);
         expect(task.completed).toBeFalsy();
-    })
+    });
 
     it('Edit task', () => {
         const task = {id: '1', title: 'Test Task 1', completed: false};
@@ -45,9 +45,9 @@ describe('mutations', () => {
     it('Clear all task', () => {
         const state = {
             tasks: [
-                { id: '1', title: 'Test Task 1', completed: false },
-                { id: '2', title: 'Test Task 2', completed: true },
-                { id: '3', title: 'Test Task 3', completed: false }
+                {id: '1', title: 'Test Task 1', completed: false},
+                {id: '2', title: 'Test Task 2', completed: true},
+                {id: '3', title: 'Test Task 3', completed: false}
             ]
         };
 
@@ -60,9 +60,9 @@ describe('mutations', () => {
     it('Clear completed task', () => {
         const state = {
             tasks: [
-                { id: '1', title: 'Test Task 1', completed: false },
-                { id: '2', title: 'Test Task 2', completed: true },
-                { id: '3', title: 'Test Task 3', completed: false }
+                {id: '1', title: 'Test Task 1', completed: false},
+                {id: '2', title: 'Test Task 2', completed: true},
+                {id: '3', title: 'Test Task 3', completed: false}
             ]
         };
 

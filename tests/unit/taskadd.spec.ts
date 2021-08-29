@@ -1,6 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
 import TaskAdd from '@/components/TaskAdd.vue';
-import { nextTick } from 'vue';
 
 describe('Tests for task add Component', () => {
     it('Create new task', async () => {
@@ -8,7 +7,7 @@ describe('Tests for task add Component', () => {
             state: {
                 tasks: []
             },
-            commit: jest.fn()
+            dispatch: jest.fn()
         };
 
         const wrapper = shallowMount(TaskAdd, {
@@ -27,7 +26,7 @@ describe('Tests for task add Component', () => {
         const createButton = wrapper.find('[data-testid="createButton"]');
         await createButton.trigger('click');
 
-        expect($store.commit).toHaveBeenCalled();
-        expect($store.commit).toHaveBeenCalledWith('addTask', title);
+        expect($store.dispatch).toHaveBeenCalled();
+        expect($store.dispatch).toHaveBeenCalledWith('addTask', title);
     });
 });

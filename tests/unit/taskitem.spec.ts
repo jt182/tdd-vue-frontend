@@ -32,7 +32,7 @@ describe('Tests for task item Component', () => {
             state: {
                 tasks: []
             },
-            commit: jest.fn()
+            dispatch: jest.fn()
         };
 
         const wrapper = shallowMount(TaskItem, {
@@ -49,8 +49,8 @@ describe('Tests for task item Component', () => {
         const taskItem = wrapper.find('[data-testid="task"]');
         await taskItem.trigger('click');
 
-        expect($store.commit).toHaveBeenCalled();
-        expect($store.commit).toHaveBeenCalledWith('editTask', {'id': '1', 'title': 'Test Task 1', 'completed': true});
+        expect($store.dispatch).toHaveBeenCalled();
+        expect($store.dispatch).toHaveBeenCalledWith('editTask', {'id': '1', 'title': 'Test Task 1', 'completed': true});
     });
 
     it('Update store with task item id to delete', async () => {
@@ -58,7 +58,7 @@ describe('Tests for task item Component', () => {
             state: {
                 tasks: []
             },
-            commit: jest.fn()
+            dispatch: jest.fn()
         };
 
         const wrapper = shallowMount(TaskItem, {
@@ -75,7 +75,7 @@ describe('Tests for task item Component', () => {
         const deleteButton = wrapper.find('[data-testid="deleteButton"]');
         await deleteButton.trigger('click');
 
-        expect($store.commit).toHaveBeenCalled();
-        expect($store.commit).toHaveBeenCalledWith('deleteTask', '1');
+        expect($store.dispatch).toHaveBeenCalled();
+        expect($store.dispatch).toHaveBeenCalledWith('deleteTask', '1');
     });
 });

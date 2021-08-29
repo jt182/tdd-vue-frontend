@@ -30,11 +30,11 @@ export default defineComponent({
         const taskItemClass = computed(() => props.task.completed ? 'taskItem taskItemCompleted' : 'taskItem');
 
         function toggleCompletedState(): void {
-            store.commit('editTask', {...props.task, completed: !props.task.completed});
+            store.dispatch('editTask', {...props.task, completed: !props.task.completed});
         }
 
         function deleteTask(): void {
-            store.commit('deleteTask', props.task.id);
+            store.dispatch('deleteTask', props.task.id);
         }
 
         return {

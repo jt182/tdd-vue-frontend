@@ -11,5 +11,5 @@ describe('Tests for header Component', () => {
         });
 
         expect(wrapper.text()).toContain('Anything');
-    })
-})
+    });
+});

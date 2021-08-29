@@ -1,7 +1,7 @@
 <template>
-    <h2>Task List ({{ tasks.length }})</h2>
+    <h2>Task List ({{ filteredTasks.length }})</h2>
     <div data-testid="tasks">
-        <div v-for="task in tasks" :key="task.id">
+        <div v-for="task in filteredTasks" :key="task.id">
             <TaskItem :task="task"/>
         </div>
     </div>
@@ -22,7 +22,7 @@ export default defineComponent({
         const store = useStore();
 
         const filterType = ref('all');
-        const tasks = computed(() => {
+        const filteredTasks = computed(() => {
             const tasks = store.getters.tasks as Task[];
             switch (filterType.value) {
                 case 'completedTasks':
@@ -34,12 +34,12 @@ export default defineComponent({
             }
         });
 
-        function filter(type: string):void {
+        function filter(type: string): void {
             filterType.value = type;
         }
 
         return {
-            tasks,
+            filteredTasks,
             filter
         };
     }

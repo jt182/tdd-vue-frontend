@@ -28,7 +28,7 @@ export default defineComponent({
         const taskTitle = ref('');
 
         function addTask(): void {
-            store.commit('addTask', taskTitle.value);
+            store.dispatch('addTask', taskTitle.value);
             taskTitle.value = '';
         }
 
