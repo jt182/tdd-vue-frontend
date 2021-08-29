@@ -1,5 +1,5 @@
 <template>
-    <div data-testid="task" :class="taskItemClass">
+    <div data-testid="task" :class="taskItemClass" @click="toggleCompletedState">
         {{ task.title }}
     </div>
 </template>
@@ -7,6 +7,7 @@
 <script lang="ts">
 import { computed, defineComponent } from 'vue';
 import { Task } from '@/models/task.model';
+import { useStore } from 'vuex';
 
 export default defineComponent({
     name: 'TaskItem',
@@ -17,11 +18,18 @@ export default defineComponent({
         }
     },
     setup(props) {
+        const store = useStore();
+
         const taskItemClass = computed(() => props.task.completed ? 'taskItem taskItemCompleted' : 'taskItem');
 
-        return {
-            taskItemClass
+        function toggleCompletedState(): void {
+            store.commit('editTask', {...props.task, completed: !props.task.completed});
         }
+
+        return {
+            taskItemClass,
+            toggleCompletedState
+        };
     }
 });
 
@@ -37,6 +45,7 @@ export default defineComponent({
     margin-bottom: 5pt;
     background-color: rgba(grey, .15);
 }
+
 .taskItem:hover {
     background-color: rgba(grey, .4);
     cursor: pointer;
@@ -46,6 +55,7 @@ export default defineComponent({
     text-decoration: line-through;
     background-color: rgba(green, .15);
 }
+
 .taskItemCompleted:hover {
     background-color: rgba(green, .4);
 }
