@@ -1,14 +1,16 @@
 <template>
     <Header title="{ Tasks App }"/>
+    <TaskList/>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import Header from '@/components/Header.vue';
+import TaskList from '@/components/TaskList.vue';
 
 export default defineComponent({
     name: 'App',
-    components: {Header}
+    components: {TaskList, Header}
 });
 </script>
 
